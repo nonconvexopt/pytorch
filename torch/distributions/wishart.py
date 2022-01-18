@@ -49,12 +49,12 @@ class Wishart(ExponentialFamily):
     Zhenxun Wang, Yunan Wu, Haitao Chu.
     """
     arg_constraints = {
-        'covariance_matrix': constraints.positive_definite,
-        'precision_matrix': constraints.positive_definite,
+        'covariance_matrix': constraints.positive_semidefinite,
+        'precision_matrix': constraints.positive_semidefinite,
         'scale_tril': constraints.lower_cholesky,
         'df': constraints.greater_than(0),
     }
-    support = constraints.positive_definite
+    support = constraints.positive_semidefinite
     has_rsample = True
 
     def __init__(self,
