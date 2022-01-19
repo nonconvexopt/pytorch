@@ -590,9 +590,8 @@ class _LogicalAnd(Constraint):
         result = torch.zeros(shape, dtype=torch.bool)
         for constraint in self.constraints:
             result = result.logical_and(constraint.check(value))
-            # Shape of the return tensor should be checked to return intersection of shape
+            # TODO: Shape of the return tensor should be reduced to return the intersection of shape
             # of each constraint.check result.
-            # result = result.logical_and(constraint.check(value).expand(shape))
         return result
 
 
