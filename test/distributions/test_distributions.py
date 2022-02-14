@@ -4899,7 +4899,7 @@ class TestJit(TestCase):
         if value.dtype in [torch.float, torch.double]:
             transform = transform_to(constraint)
             delta = value.new(value.shape).normal_()
-            return transform(transform.inv(value) + delta)
+            return transform(transform.inv(value) + transform(delta))
         if value.dtype == torch.long:
             result = value.clone()
             result[value == 0] = 1
